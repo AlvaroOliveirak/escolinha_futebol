@@ -18,7 +18,7 @@ import React, { useState, useEffect } from "react";
  *   3. Envio com feedback de loading (`isSubmitting`).
  *   4. Tela de sucesso (`isSuccess`) com botão gerador do link oficial do WhatsApp.
  * 
- * - Para o colega de ESTILO: Você pode aplicar livremente classes do Tailwind (ex: `bg-green-700`,
+ * - Para o ESTILO: Você pode aplicar livremente classes do Tailwind (ex: `bg-green-700`,
  *   `rounded-2xl`, etc.) na estrutura JSX. Apenas preserve os nomes dos inputs e os `onChange={handleChange}`.
  * =========================================================================================
  */

@@ -7,18 +7,17 @@ import { planosMock } from "./data/mockData";
  * =========================================================================================
  * PROJETO: Escola de Futebol "Craques do Futuro"
  * RESPONSÁVEL: Álvaro Oliveira (Lógica e Fluxo da Aplicação)
- * 
+ *
  * GUIA DE INTEGRAÇÃO PARA A EQUIPE:
  * -----------------------------------------------------------------------------------------
- * 1. RESPONSÁVEL POR CONTEÚDO:
+ * 1. CONTEÚDO:
  *    - Crie o arquivo centralizado `src/data/schoolData.js` contendo todos os dados oficiais
  *      (avisos, professores, horários, planos, depoimentos e faq).
  *    - Quando subir seu arquivo, você pode substituir `planosMock` e `turmasMock` pelas suas
  *      constantes oficiais (`schedulesData`, `plansData`, etc.).
- * 
- * 2. RESPONSÁVEL POR ESTILO E UI:
- *    - Você pode substituir os elementos visuais abaixo pelos seus componentes estilizados
- *      com Tailwind CSS: `<Header />`, `<Home />`, `<Coaches />`, `<ScheduleAndPrices />`,
+ *
+ * 2.  ESTILO:
+ *    - Você pode substituir os elementos visuais abaixo pelos seus componentes estilizados: `<Header />`, `<Home />`, `<Coaches />`, `<ScheduleAndPrices />`,
  *      `<Testimonials />`, `<FAQ />` e `<Footer />`.
  *    - IMPORTANTE PARA MANTER O FLUXO: Para disparar o modal a partir dos seus botões de ação
  *      (ex: botão da Hero ou botões "Tenho Interesse" dos cards de planos), basta passar a
@@ -45,17 +44,33 @@ export default function App() {
   };
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "20px", fontFamily: "sans-serif" }}>
+    <div
+      style={{
+        maxWidth: "1000px",
+        margin: "0 auto",
+        padding: "20px",
+        fontFamily: "sans-serif",
+      }}
+    >
       {/* 
         [ÁREA DE INTEGRAÇÃO DE UI - ESTILO]
-        Aqui o integrante de Estilo/UI irá encaixar o <Header /> com a navegação superior fixa.
+        Aqui o Estilo/UI irá encaixar o <Header /> com a navegação superior fixa.
       */}
-      <header style={{ borderBottom: "2px solid #e5e7eb", paddingBottom: "16px", marginBottom: "24px" }}>
-        <h1 style={{ fontSize: "1.8rem", color: "#15803d", marginBottom: "8px" }}>
+      <header
+        style={{
+          borderBottom: "2px solid #e5e7eb",
+          paddingBottom: "16px",
+          marginBottom: "24px",
+        }}
+      >
+        <h1
+          style={{ fontSize: "1.8rem", color: "#15803d", marginBottom: "8px" }}
+        >
           Escola de Futebol - Craques do Futuro
         </h1>
         <p style={{ color: "#4b5563" }}>
-          Módulo de Lógica e Fluxo: Filtro interativo de turmas e agendamento de aulas.
+          Módulo de Lógica e Fluxo: Filtro interativo de turmas e agendamento de
+          aulas.
         </p>
       </header>
 
@@ -64,8 +79,17 @@ export default function App() {
         Demonstra o disparo do agendamento vindo do botão principal do Banner (Hero).
         Na versão final, passe `onOpenTrialModal={handleOpenModal}` para o componente <Home />.
       */}
-      <section style={{ marginBottom: "24px", padding: "16px", backgroundColor: "#f0fdf4", borderRadius: "8px" }}>
-        <h3 style={{ marginBottom: "8px", fontWeight: "bold" }}>Ações Rápidas (Gatilho da Hero Section):</h3>
+      <section
+        style={{
+          marginBottom: "24px",
+          padding: "16px",
+          backgroundColor: "#f0fdf4",
+          borderRadius: "8px",
+        }}
+      >
+        <h3 style={{ marginBottom: "8px", fontWeight: "bold" }}>
+          Ações Rápidas (Gatilho da Hero Section):
+        </h3>
         <button
           onClick={() => handleOpenModal("Aula Experimental Gratuita")}
           style={{
@@ -89,7 +113,9 @@ export default function App() {
         Ao clicar em "Agendar", dispara o modal passando o nome da turma selecionada.
       */}
       <FilterTurmas
-        onAgendar={(turmaNome: string) => handleOpenModal(`Turma: ${turmaNome}`)}
+        onAgendar={(turmaNome: string) =>
+          handleOpenModal(`Turma: ${turmaNome}`)
+        }
       />
 
       {/* 
@@ -100,10 +126,22 @@ export default function App() {
         o evento `onClick={() => handleOpenModal(plano.nome)}`.
       */}
       <section style={{ marginTop: "32px", marginBottom: "32px" }}>
-        <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "12px" }}>
+        <h2
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            marginBottom: "12px",
+          }}
+        >
           Planos e Valores
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "16px",
+          }}
+        >
           {planosMock.map((plano) => (
             <div
               key={plano.id}
@@ -115,8 +153,23 @@ export default function App() {
                 backgroundColor: "#fff",
               }}
             >
-              <h3 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "8px" }}>{plano.nome}</h3>
-              <p style={{ fontSize: "1.25rem", color: "#15803d", fontWeight: "bold", marginBottom: "16px" }}>
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  marginBottom: "8px",
+                }}
+              >
+                {plano.nome}
+              </h3>
+              <p
+                style={{
+                  fontSize: "1.25rem",
+                  color: "#15803d",
+                  fontWeight: "bold",
+                  marginBottom: "16px",
+                }}
+              >
                 {plano.valor}
               </p>
               <button
@@ -142,7 +195,7 @@ export default function App() {
       {/* 
         [FLUXO 4: MODAL GLOBAL DE AGENDAMENTO / MATRÍCULA]
         Renderizado e controlado pelo estado do App.
-        O integrante de Estilo pode estilizar o interior com classes do Tailwind sem alterar
+        O  Estilo pode estilizar o interior com classes do Tailwind sem alterar
         as propriedades `initialPlan` e `onClose`.
       */}
       {modalState.isOpen && (

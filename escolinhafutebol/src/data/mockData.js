@@ -4,7 +4,7 @@
  * DADOS MOCKADOS: Turmas e Planos
  * RESPONSÁVEL: Álvaro Oliveira (Lógica e Fluxo)
  * 
- * NOTA PARA O INTEGRANTE DE CONTEÚDO:
+ * NOTA PARA CONTEÚDO:
  * - Estes dados são temporários para viabilizar o desenvolvimento e teste da lógica de filtro
  *   e do modal de agendamento.
  * - Ao centralizar as informações da escolinha no arquivo oficial (ex: `src/data/schoolData.js`),
