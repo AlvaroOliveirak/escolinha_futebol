@@ -1,8 +1,7 @@
 import { useState } from "react";
 import ModalAgendamento from "./components/ModalAgendamento";
 import FilterTurmas from "./components/FilterTurmas";
-import { planosMock } from "./data/mockData";
-
+import { plansData, schedulesData } from "./data/schoolData";
 /**
  * =========================================================================================
  * PROJETO: Escola de Futebol "Craques do Futuro"
@@ -113,6 +112,7 @@ export default function App() {
         Ao clicar em "Agendar", dispara o modal passando o nome da turma selecionada.
       */}
       <FilterTurmas
+        turmas={schedulesData}
         onAgendar={(turmaNome: string) =>
           handleOpenModal(`Turma: ${turmaNome}`)
         }
@@ -142,7 +142,7 @@ export default function App() {
             gap: "16px",
           }}
         >
-          {planosMock.map((plano) => (
+          {plansData.map((plano) => (
             <div
               key={plano.id}
               style={{
