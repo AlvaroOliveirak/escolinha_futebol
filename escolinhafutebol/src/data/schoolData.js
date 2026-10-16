@@ -9,7 +9,7 @@ export const schoolInfo = {
     "Escola fictícia criada para um projeto acadêmico, com atividades esportivas para crianças e adolescentes.",
   localidade: "Recife, Pernambuco",
   endereco: "Endereço fictício — Recife, PE",
-  telefone: "(81) 90000-0000",
+  telefone: "(11) 98765-4321",
   email: "contato@craquesdofuturo.example",
 };
 
@@ -214,7 +214,7 @@ export const faqData = [
     id: 4,
     pergunta: "Quais são os valores das mensalidades?",
     resposta:
-      "Consulte a seção de planos. Os preços apresentados neste projeto são fictícios.",
+      "Consulte a seção de planos.",
   },
   {
     id: 5,
