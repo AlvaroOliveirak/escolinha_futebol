@@ -42,16 +42,30 @@ Nesta etapa, toda a arquitetura de controle de fluxo e regras de negócio foi co
 * **Confirmação e Integração Externa:** Tela de sucesso com botão que gera a mensagem formatada e codificada para a API do WhatsApp (`https://wa.me/5511987654321?text=...`).
 * **Reset Seguro:** Ao fechar o modal, os erros e estados de sucesso são limpos para permitir novas inscrições sem travamentos.
 
-### 4. Orquestrador Central (`escolinhafutebol/src/App.tsx`)
+### 4. Orquestrador Central Modular (`escolinhafutebol/src/App.tsx`)
 * Centraliza o estado global do modal (`modalState.isOpen`, `modalState.selectedPlan`).
 * Expõe as funções `handleOpenModal(plano)` e `handleCloseModal()`.
-* Demonstra e conecta todos os gatilhos previstos no projeto:
-  1. Chamada rápida da Hero Section ("Agendar Aula Experimental").
-  2. Chamada por Turma a partir da grade filtrada (`FilterTurmas`).
-  3. Chamada por Plano específico a partir dos cards ("Tenho Interesse").
+* Atua exclusivamente como orquestrador de alto nível (~70 linhas), delegando a renderização visual para componentes dedicados e reutilizáveis em `src/components/`.
 
-### 5. Mock de Dados para Desenvolvimento (`escolinhafutebol/src/data/mockData.js`)
-* Dados de teste cobrindo todas as faixas etárias da escolinha (Sub-7, Sub-11, Sub-15 e Sub-17) e planos para validação independente da lógica.
+### 5. Arquitetura Modular de Componentes (`escolinhafutebol/src/components/`)
+A interface está 100% modularizada para evitar conflitos no Git e permitir fácil manutenção:
+* `Header.tsx`: Navbar responsiva com logo e menu mobile.
+* `Hero.tsx`: Seção de destaque com chamada para ação (CTA) e estatísticas.
+* `Notices.tsx`: Mural dinâmico de avisos da coordenação.
+* `About.tsx`: Metodologia formativa dos 4 pilares com gráfico tático.
+* `Coaches.tsx`: Apresentação do corpo docente com fotos e especialidades.
+* `FilterTurmas.jsx`: Grade interativa de horários conectada ao hook `useScheduleFilter`.
+* `Plans.tsx`: Cards de investimento, planos de matrícula e benefícios.
+* `Testimonials.tsx`: Depoimentos de pais e atletas.
+* `FAQ.tsx`: Acordeão interativo de dúvidas frequentes com estado local encapsulado.
+* `ContactLocation.tsx`: Informações de contato direto, localização e botão WhatsApp.
+* `Footer.tsx`: Rodapé institucional com links rápidos e créditos.
+* `ModalAgendamento.jsx`: Modal interativo com validação e envio formatado.
+* `SoccerIcons.jsx`: Ícones temáticos SVG em alta resolução (escudo, bola e campo tático).
+
+### 6. Mock e Dados Oficiais (`escolinhafutebol/src/data/`)
+* `schoolData.js`: Centralização de dados oficiais da escola (avisos, professores, horários, planos, FAQ, contatos).
+* `mockData.js`: Dados simulados para testes isolados de filtros e fluxo.
 
 ---
 
